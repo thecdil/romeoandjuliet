@@ -1,0 +1,84 @@
+---
+layout: default
+---
+{% assign lines = site.data.midsummer | where: "actscene", page.actscene %}
+
+{%- comment -%} find all words used in the subject metadata {%- endcomment -%}
+{%- assign min-count = 1 -%}
+{%- assign players = lines | map: "player" | compact | join: ";" | split: ";" -%}
+{%- assign uniquePlayers = players | uniq -%}
+
+
+<!--<div class="container-fluid">
+    
+{% assign notes = site.data.notes[page.object-id] %}
+      <div class="row">
+          <div class="col-md-3">
+    <img src="{{site.baseurl}}/images/portraits/{{ page.object-id}}.png">
+<ul id="notes-container">
+    {% for note in notes %}
+<li class="hidden-all {{note.tag | replace: ";"," "}}"><a class="filter" href="#{{note.quote | truncatewords: 5,""}}" onclick="highlight('{{note.quote}}')" data-filter="{{note.quote | truncatewords: 5,""}}">{{note.detail}}</a></li>
+   {% endfor %}
+  </ul>
+</div>
+       <div class="col-md-9">-->
+
+
+<div class="container-fluid">
+    <div class="container">
+        <header>
+            <h2 class="poet-name my-2">{{ featured_scene}}</h2>
+        </header>
+        <div class="filteroptions mx-2 bg-light p-4 mb-4">
+            <h3 class="text-center">
+                <div class="form-inline my-2 my-lg-0 ">
+                    <input type="text" id="quicksearch" placeholder="Search ... " class="searchinput form-control mr-2 col-4">
+                    <input class="searchinput mx-2 btn btn-lg btn-primary col-2" title="Search" value="Go" alt="Search" id="goButton" onclick="filterItems()">
+                    <button class="reset btn btn-secondary ml-2" href="#" data-filter="" class="filter">Reset Filters</button>
+                </div>
+                <h2><span class="h6">Filter by topic:</span> <select id="filters" title="Jump to a year" class="filteroptions" style="max-width: 100%;">
+                        <option value="#" selected="selected">On All Topics</option>
+                        {% for filter in uniquePlayers %}
+                        <option value="{{ filter }}">{{filter | capitalize}}</option>
+                        {% endfor %}
+
+                        <br />
+                        <hr /><br />
+                    </select></h2>
+                <h4><span class="info2"><span id="numberof">{{ lines | size }}</span> of {{ lines | size }} rows</span> (click a missing row to make it appear)</h4>
+
+        </div>
+    </div>
+    <div id="contents-container" class="tufte-content">
+        <article class="pt-0">
+            <section>
+                {% for line in lines %}
+                {% assign prev_i = forloop.index0 | minus: 1 %}
+                {% assign prev_player = lines[prev_i].player %}
+                {% assign actsceneline = line.actsceneline |split: "." | last %}
+                {% assign mod5 = actsceneline | modulo: 5 %}
+                {% if line.player == "StageDirection" %}
+                <p id="{{ line.dataline }}" class="{{ line.player }} my-4">
+                    <em>{{line.playerline}}</em>
+                </p>
+                {% elsif line.actsceneline %}
+                <p id="{{ line.dataline }}" class="{{ line.player }} row">
+                    {% if mod5 == 0 %}<span class="timestamp ml-5">{{ actsceneline }}</span>{% endif %}
+                    {% if line.player == prev_player %}
+                    <span class="col-3">&emsp;</span>
+                    {% else %}
+                    <span class="col-3">{{line.player | remove: ":"}}: </span>
+                    {% endif %}
+                    <span class="col-12 col-md-9">{{line.playerline}}
+                        {% if line.annotation%}
+                        <label for="{{line.dataline}}-note" class="margin-toggle sidenote-number"></label><input type="checkbox" id="{{line.dataline}}-note" class="margin-toggle"><span class="sidenote">{{line.annotation}}</span>
+                        {% endif %}
+                    </span>
+                </p>
+                {% endif %}
+                {% endfor %}
+            </section>
+        </article>
+    </div>
+
+</div>

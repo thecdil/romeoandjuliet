@@ -1,0 +1,43 @@
+
+@media print {
+    
+    html, body {
+      height:100%; 
+      margin: 0 !important; 
+      padding: 0 !important;
+      overflow: visible;
+      display:block;
+      font-size: 1.2rem;
+    }
+
+    .transcript-content{
+        height:auto;
+        min-height:5000px;
+        overflow:visible;
+        display:block;
+    }
+  
+  }
+
+  td
+  {vertical-align: top;
+    padding: 4px 10px;}
+
+.timestamp{font-size:10px;position: absolute; left: 9%}
+.grey {
+  color: grey;
+ }
+
+.iframe-wrapper{
+position: fixed;
+  right: 10px;
+  height: 200px;
+  width: 370px;
+  @include media-query($on-palm) {
+    position:relative; 
+  }
+}
+
+
+
+

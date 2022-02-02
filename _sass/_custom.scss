@@ -1,0 +1,86 @@
+/* 
+    Put your custom SCSS here! 
+    This allows you to override any CollectionBuilder or Bootstrap CSS without modifying the base theme files directly.
+*/
+
+.navbar
+{z-index: 10000;}
+
+.annotation {
+    background-color: transparent;
+    width: 15vw;  
+    font-size: .8rem !important;
+    vertical-align: baseline;
+    position: relative;
+z-index:0;
+font-size: smaller;
+cursor: pointer;
+max-height: 30px;
+
+div.content{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0px;
+    padding: .75em;
+    p{
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    figure{
+        display: none;
+    }
+}
+}
+
+.annotate-show{
+    z-index: 100;
+    
+    div.content{
+    overflow:visible;
+    white-space: normal !important;
+    background-color:#fff !important;
+    box-shadow: 1px 1px 4px #666;
+padding: .75em;
+z-index: 100;
+figure{
+    display: block;
+}
+}
+}
+
+.annotated{
+        border-right:1px solid #FFA500;   
+        background-color:rgb(248, 247, 247);
+        cursor: pointer;
+            &:hover{background-color:rgb(247, 244, 244);}
+
+        .hilite{
+            border-bottom:2px solid #FFA500;   
+            cursor: pointer;
+            &:hover{font-weight: bold;}
+        }
+     }
+
+   
+
+    .performance-annotated{
+        border-right:1px solid #2535c9;   
+        background-color:rgb(219, 241, 253);
+     }
+
+
+.blockquote {
+    font-size: 1.75rem;
+}
+
+.featured {
+    background-color:rgb(219, 241, 253) !important;
+    .annotated{
+    background-color:rgb(219, 241, 253) !important;
+
+    }
+  }
+
+
+  .anchored-highlight{background:aquamarine;}

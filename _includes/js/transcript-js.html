@@ -1,0 +1,179 @@
+<script type="text/javascript">
+  $("#players").on('change', function () {
+    var myClass = this.value;
+    $("section").removeClass("featured");
+    $("section").removeClass("grey");    
+    $('div').removeClass("anchored-highlight");
+    $(".playline").hide();
+    $('div.' + myClass).show();
+    $("input#quicksearch").val("");
+    var numberofint = $('div.'+ myClass).length;
+    $("#numberof").html(numberofint);
+    $('.linecount').removeClass('d-none');
+    $("select").not(this).val($("option:first").val());
+    let url = new URL(window.location);
+    let params = url.searchParams;
+    params.set('player', myClass);
+    params.delete('q');
+    params.delete('scene');
+    var p = params.toString();
+    window.history.replaceState({}, '', location.pathname + '?' + p);
+  });
+
+  $("#scenes").on('change', function () {
+    var myClass = this.value;
+    $("section").removeClass("featured");
+    $("section").removeClass("grey");
+    $('div').removeClass("anchored-highlight");
+    $(".playline").hide();
+    $('div.' + myClass).show();
+    $("input#quicksearch").val("");
+    var numberofint = $('div.'+ myClass).length;
+    $("#numberof").html(numberofint);
+    $('.linecount').removeClass('d-none');
+    $("select").not(this).val($("option:first").val());
+    let url = new URL(window.location);
+    let params = url.searchParams;
+    params.set('scene', myClass);
+    params.delete('q');
+    params.delete('player');
+    var p = params.toString();
+    window.history.replaceState({}, '', location.pathname + '?' + p);
+  });
+
+  $("button.reset").click(function () {
+    $(".playline").show();
+    $(".searchline").removeClass("grey");
+    $('div').removeClass("anchored-highlight");
+    $('div').removeClass("annotate-show");
+    $("div").removeClass("featured");
+    $("section").removeClass("featured");
+    $("span").removeClass("text-danger");
+    $("input#quicksearch").val("");
+    $("#players").val($("#players option:first").val());
+    $("#scenes").val($("#scenes option:first").val());
+    var numberofint = $('section').length;
+    $("#numberof").html(numberofint);
+    let url = new URL(window.location);
+    let params = url.searchParams;
+    params.delete('q');
+    params.delete('player');
+    params.delete('scene');
+    var p = params.toString();
+    window.history.replaceState({}, '', location.pathname + '?' + p);
+  });
+
+  $("option:first").click(function () {
+    $("button.reset").click();
+  })
+
+
+
+</script>
+<script>
+  function filterItems() {
+    $('.playerline').removeClass("anchored-highlight");
+    $("section").removeClass("featured");
+    var input, filter, p, span, i;
+    input = document.getElementById("quicksearch");
+    let url = new URL(window.location);
+    let params = url.searchParams;
+    params.set('q', input.value);
+    var p = params.toString();
+    window.history.replaceState({}, '', location.pathname + '?' + p);
+    filterplain = input.value;
+    filter = input.value.toUpperCase();
+    itemcontainer = document.getElementById("contents-container");
+    item = itemcontainer.getElementsByTagName("section");
+    for (i = 0; i < item.length; i++) {
+      itemcontents = item[i].getElementsByTagName("div")[0];
+      var index = itemcontents.innerHTML.indexOf(filterplain);
+      console.log(filter + index)
+      if (itemcontents) {
+        if (itemcontents.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          item[i].classList.add("featured");
+          item[i].classList.remove("grey");
+          itemcontents.innerHTML = itemcontents.innerHTML.replace(filterplain, "<span class='text-danger'>" + filterplain + "</span>");
+
+        } else {
+          item[i].classList.remove("featured");
+          item[i].classList.add("grey");
+        }
+      }
+     var numberofint = $('.featured').length;
+     $("#numberof").html(numberofint);
+     $('.linecount').removeClass('d-none');
+    }
+  }
+
+</script>
+<script>
+  /* fiter items by entering value of button or link pushed into quicksearch box
+
+  var filterit = function () {
+    let url = new URL(window.location);
+    let params = url.searchParams;
+    $('#quicksearch').val('');
+    var filterValue = $(this).attr('data-filter');
+    var filterClass = $(this).attr('data-filter').replace(" ", "-").replace(" ", "-");
+    $('#quicksearch').val($('#quicksearch').val() + filterValue);
+    $('#goButton').click();
+    params.set('filter', filterValue);
+    var p = params.toString();
+    window.history.replaceState({}, '', location.pathname + '?' + p);
+    var filterValueclass = "." + filterClass;
+    $(filterValueclass).addClass('active');
+  };
+  // run filterit function when link/button with class filter clicked
+  $('a.filter').click(filterit);
+*/
+  // click goButton to search if return pressed in search box
+  $('#quicksearch').keypress(function (e) {
+    if (e.which == 13) {//Enter key pressed
+      $('#goButton').click();
+      //Trigger search button click event
+    }
+  });
+  // get hash from url
+  // var hashfilter = decodeURIComponent(location.hash.substr(1));//.replace(/%20/g, " ");
+  //var hashfilterclass = "." + location.hash.substr(1).replace("%20","-").replace("%20","-").replace("%20","-").replace(" ","-").replace(" ","-").replace(" ","-");
+
+  $(document).ready(function () {
+    let url = new URL(window.location);
+    let params = url.searchParams;
+    var dataFilter = url.searchParams.get('q');
+    var sceneFilter = url.searchParams.get('scene');
+    var playerFilter = url.searchParams.get('player');
+    var hashfilter = decodeURIComponent(location.hash.substr(1));//.replace(/%20/g, " ");
+    if (dataFilter) {
+      // code to be executed if a hash is contained in the url
+      $('#quicksearch').val(dataFilter);
+      $('#goButton').click();
+      params.delete('scene');
+      params.delete('player');
+      //$(hashfilterclass).addClass('active');
+    }
+    else if (playerFilter) {
+      params.delete('q');
+      // code to be executed if a filter is contained in the url search parameters
+      $('#players').val(playerFilter).change();
+      //$(hashfilterclass).addClass('active');
+    }
+    else if (sceneFilter) {
+      params.delete('q');
+      // code to be executed if a filter is contained in the url search parameters
+      $('#scenes').val(sceneFilter).change();
+      //$(hashfilterclass).addClass('active');
+    }
+    else if (hashfilter) {
+      params.delete('q');
+      // code to be executed if an anchor (#) is contained in the url
+      $('#' + hashfilter).addClass('anchored-highlight');
+
+    }
+    else {
+    }
+  });
+
+
+</script>

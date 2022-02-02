@@ -1,0 +1,70 @@
+{% comment %}
+Supply up to four headings (the title of each section of the accordion):
+- section-one-heading
+- section-two-heading
+- section-three-heading
+- section-four-heading
+
+Supply up to four corresponding text sections:
+- section-one-text
+- section-two-text
+- section-three-text
+- section-four-text
+{% endcomment %}
+
+<div class="accordion py-4" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+          <button class="btn btn-link btn-block text-left text-dark collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h5 class="mb-0">{{ include.section-one-heading }} <span class="fas fa-chevron-down smalltxt"></span></h5>
+          </button>
+      </div>
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          {{ include.section-one-text | markdownify }}
+        </div>
+      </div>
+    </div>
+    {% if include.section-two-heading and include.section-two-text %}
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+          <button class="btn btn-link btn-block text-left text-dark collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h5 class="mb-0">{{ include.section-two-heading }} <span class="fas fa-chevron-down smalltxt"></span></h5>
+          </button>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+            {{ include.section-two-text | markdownify }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if include.section-three-heading and include.section-three-text %}
+    <div class="card">
+      <div class="card-header" id="headingThree">
+          <button class="btn btn-link btn-block text-left text-dark collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <h5 class="mb-0">{{ include.section-three-heading }} <span class="fas fa-chevron-down smalltxt"></span></h5>
+          </button>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+            {{ include.section-three-text | markdownify }}  
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if include.section-four-heading and include.section-four-text %}
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <button class="btn btn-link btn-block text-left text-dark collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <h5 class="mb-0">{{ include.section-four-heading }} <span class="fas fa-chevron-down smalltxt"></span></h5>
+            </button>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+              {{ include.section-four-text | markdownify }}  
+          </div>
+        </div>
+    </div>
+    {% endif %}
+</div>

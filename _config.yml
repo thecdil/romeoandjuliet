@@ -12,7 +12,7 @@ url:
 # baseurl is your github repository's name prefixed with a /
 baseurl: /romeo_juliet
 # location of code, the full url to your github repository
-source-code: https://github.com/thecdil/dramaturgy
+source-code: https://github.com/thecdil/romeoandjuliet
 
 ##########
 # SITE SETTINGS

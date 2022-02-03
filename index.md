@@ -1,6 +1,7 @@
 ---
 layout: about
 title: Home
+permalink: index-old.html
 ---
 
 {% include feature/jumbotron.html %}

@@ -1,12 +1,8 @@
 ---
 layout: default
 ---
-{% if page.actscene contains 'ALL' %}
-{% assign lines = site.data.midsummer %}
-{% else %}
-{% assign lines = site.data.midsummer | where: "actscene", page.actscene %}
-{% endif %}
-{%- assign items = site.data[site.metadata] -%}
+
+{% assign lines = site.data[site.play]  %}
 
 {%- comment -%} find all words used in the player field of our metadata {%- endcomment -%}
 {% capture players_play %}{% for line in lines %}{% unless line.player == "ACT" or line.player == "SCENE" %}{{- line.player -}};{% endunless %}{% endfor %}{% endcapture%}
@@ -19,9 +15,9 @@ layout: default
 <div class="container">
     <div class="row my-3">
         <div class="col-md-12">
-            <h1>{{ page.title }}</h1>
+            <h1>{{ site.play_title }}</h1>
         </div>
-        {% if page.actscene contains 'ALL' %}
+      
     </div>
     
     <div class="row my-3 sticky-top bg-white border-bottom border-left border-right">
@@ -75,34 +71,8 @@ layout: default
                         </div>-->
                 </div>
                </div>
-        {% else %}
-        <div class="col-md-3">
-            <p class="py-3">
-                <select id="players" title="Jump to a year" class="filteroptions filters px-3 py-2" style="max-width: 100%;">
-                    <option value="#" class="reset" selected="selected reset">Filter by Player</option>
-                    {% for filter in uniquePlayers %}
-                    <option value="{{ filter }}">{{ filter | capitalize }}</option>
-                    {% endfor %}
-                </select>
-            </p>
-        </div>
-        <div class="col-md-5">
-            <div class="row py-3">
-                <div class="col-8">
-                    <div class="input-group ">
-                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="goButton" id="quicksearch" >
-                        <div class="input-group-append">
-                          <button class="btn btn-primary rounded-right border-light input-group-text" type="submit" title="Search" alt="Search" id="goButton" onclick="filterItems()">Go</button>
-                        </div>
-                    </div>
-                   </div>
-                <div class="col-4">
-                    <button class="reset btn btn-sm btn-secondary mt-1" href="#" data-filter="">Reset Filters</button>
-                    <h5><span class="info2"><span id="numberof">{{ lines | size }}</span> of {{ lines | size }} rows</span></h5>
-                </div>
-            </div>    
-        </div>
-        {% endif %}
+   
+        
      
     </div>
     <div id="contents-container">

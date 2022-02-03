@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{% assign lines = site.data.midsummer | where: "actscene", page.actscene %}
+{% assign lines = site.data[site.play] | where: "actscene", page.actscene %}
 
 {%- comment -%} find all words used in the subject metadata {%- endcomment -%}
 {%- assign min-count = 1 -%}

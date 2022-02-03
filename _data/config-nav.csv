@@ -1,16 +1,6 @@
 display_name,stub,dropdown_parent
-Home,/
-Midsummer,
-The Entirety,/midsummer/all.html,Midsummer
-Act 1 - Scene 1,/midsummer/act1_scene1.html,Midsummer
-Act 1 - Scene 2,/midsummer/act1_scene2.html,Midsummer
-Act 2 - Scene 1,/midsummer/act2_scene1.html,Midsummer
-Act 2 - Scene 2,/midsummer/act2_scene2.html,Midsummer
-Act 3 - Scene 1,/midsummer/act3_scene1.html,Midsummer
-Act 3 - Scene 2,/midsummer/act3_scene2.html,Midsummer
-Act 4 - Scene 1,/midsummer/act4_scene1.html,Midsummer
-Act 4 - Scene 2,/midsummer/act4_scene2.html,Midsummer
-Act 5 - Scene 1,/midsummer/act5_scene1.html,Midsummer
+Play,/
+Old Index,index-old.html
 Supporting Material,
 Browse,/browse.html,Supporting Material
 Subjects,/subjects.html,Supporting Material

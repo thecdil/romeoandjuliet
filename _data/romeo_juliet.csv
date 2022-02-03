@@ -1,8 +1,8 @@
 play,dataline,actsceneline,actscene,act,scene,line,player,playerline,annotation,highlight,objectid
 Romeo and Juliet,85282,,1.0,1,0,,StageDirection,ACT I,,,
 Romeo and Juliet,85283,,1.0,1,0,,StageDirection,PROLOGUE,,,
-Romeo and Juliet,85284,1.0.1,1.0,1,0,1,RICHMOND,"Two households, both alike in dignity,",,,
-Romeo and Juliet,85285,1.0.2,1.0,1,0,2,RICHMOND,"In fair Verona, where we lay our scene,",,,
+Romeo and Juliet,85284,1.0.1,1.0,1,0,1,RICHMOND,"Two households, both alike in dignity,",This line is not working because it's first being searched for some reason; need to figure that out in the code,households,midsummer002
+Romeo and Juliet,85285,1.0.2,1.0,1,0,2,RICHMOND,"In fair Verona, where we lay our scene,",does this line work? Let's see. Her'es a lot of text to see the overflow of everything the overflow being the overflow and the everything being [the endless nothing we all are](https://www.poetryfoundation.org/poems/45235/the-snow-man),where,midsummer0010
 Romeo and Juliet,85286,1.0.3,1.0,1,0,3,RICHMOND,"From ancient grudge break to new mutiny,",,,
 Romeo and Juliet,85287,1.0.4,1.0,1,0,4,RICHMOND,Where civil blood makes civil hands unclean.,,,
 Romeo and Juliet,85288,1.0.5,1.0,1,0,5,RICHMOND,From forth the fatal loins of these two foes,,,
@@ -18,7 +18,7 @@ Romeo and Juliet,85297,1.0.14,1.0,1,0,14,RICHMOND,"What here shall miss, our toi
 Romeo and Juliet,85298,,1.0,1,0,,StageDirection,SCENE I. Verona. A public place.,,,
 Romeo and Juliet,85299,,1.1,1,1,,StageDirection,"Enter SAMPSON and GREGORY, of the house of Capulet, armed with swords and bucklers",,,
 Romeo and Juliet,85300,1.1.1,1.1,1,1,1,SAMPSON,"Gregory, o' my word, we'll not carry coals.",,,
-Romeo and Juliet,85301,1.1.2,1.1,1,1,2,GREGORY,"No, for then we should be colliers.",,,
+Romeo and Juliet,85301,1.1.2,1.1,1,1,2,GREGORY,"No, for then we should be colliers.",IS this line working? let's find out by writing a bunch of nonsense and then clicking on it and clicking on it,colliers,
 Romeo and Juliet,85302,1.1.3,1.1,1,1,3,SAMPSON,"I mean, an we be in choler, we'll draw.",,,
 Romeo and Juliet,85303,1.1.4,1.1,1,1,4,GREGORY,"Ay, while you live, draw your neck out o' the collar.",,,
 Romeo and Juliet,85304,1.1.5,1.1,1,1,5,SAMPSON,"I strike quickly, being moved.",,,
@@ -271,7 +271,7 @@ Romeo and Juliet,85550,1.1.238,1.1,1,1,238,BENVOLIO,"I'll pay that doctrine, or 
 Romeo and Juliet,85551,,1.1,1,1,,StageDirection,Exeunt,,,
 Romeo and Juliet,85552,,1.2,1,2,,StageDirection,SCENE II. A street.,,,
 Romeo and Juliet,85553,,1.2,1,2,,StageDirection,"Enter CAPULET, PARIS, and Servant",,,
-Romeo and Juliet,85554,1.2.1,1.2,1,2,1,CAPULET,"But Montague is bound as well as I,",,,
+Romeo and Juliet,85554,1.2.1,1.2,1,2,1,CAPULET,"But Montague is bound as well as I,",IS this line working? let's find out by writing a bunch of nonsense and then clicking on it and clicking on it,bound,
 Romeo and Juliet,85555,1.2.2,1.2,1,2,2,CAPULET,"In penalty alike, and 'tis not hard, I think,",,,
 Romeo and Juliet,85556,1.2.3,1.2,1,2,3,CAPULET,For men so old as we to keep the peace.,,,
 Romeo and Juliet,85557,1.2.4,1.2,1,2,4,PARIS,"Of honourable reckoning are you both,",,,

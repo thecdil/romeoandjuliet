@@ -85,6 +85,9 @@ In this section, Emily Cornelius details information about adaptations of *A Mid
 
 Several times through the action of the play, the characters speak of or to the act of singing and dancing. There are many words that would suggest singing and dancing such as “roundel” for dance. However, the context of the meaning of the words that convey the action of singing or dancing can also shift the interpretation based on the characters and what action they mean to convey. In Act 4, when Bottom thinks to himself to ask Peter Quince to make a “ballad” of his dream, he is speaking of a ballad type poem set to music (today’s opera). When he says “sing” he means to deliver prose through affected speech like reading poetry but we might hear that phrase today to mean he would sing a song or aria.  Whereas, in Act 5, Theseus asks “what masques, what dances” - when you look up the definition of [Masques](https://www.britannica.com/art/masque) you can see they were staged dances popular in this period - but they told stories (today’s ballet) whereas dance was not required to do so. Below are some examples of discussions of music and dance in the play. 
 
+
+{% include feature/line-quote.html line-start="67652" line-end="67654" %}
+
 ### Act II, Scene 2: [link to text dataline 67652] 
 
 Titania: “Come now, a roundel and a fairy song."  

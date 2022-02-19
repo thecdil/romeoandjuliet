@@ -1,0 +1,43 @@
+{% assign lines = site.data[site.play]  %}
+{% assign start = include.line-start  %}
+{% assign end = include.line-end  %}
+{% assign range = (start..end) %}
+
+<p>{% capture range %}{% for i in range %}{{i}}{% endfor %}{% endcapture %}</p>
+
+{% for line in lines %}
+{% if range contains line.dataline %}
+{% assign prev_i = forloop.index0 | minus: 1 %}
+{% assign prev_player = lines[prev_i].player %}
+{% assign actsceneline = line.actsceneline |split: "." | last %}
+{% assign numline = actsceneline | times: 1 %}
+{% unless line.actsceneline %}
+<section class="searchline pl-3">
+<div id="{{ line.dataline }}" class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row my-4 playline ml-4 playerline">
+<p><em>{{line.playerline}}</em></p>
+</div>
+</section>
+{% else %}
+<section class="searchline pl-3">
+{% unless line.player == prev_player %}
+<div class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row mt-3 playline">
+<div class="col-1 small"></div>
+<div class="col-8 col-md-9 font-weight-bold">
+<p class="mb-0 playerline">
+{{line.player | remove: ":"}}: </p>
+</div>
+</div>
+{% endunless %}
+
+<div id="{{ line.dataline }}" class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row playline textline">
+<div class="col-1 small" id="{{ line.actsceneline }}">{{ line.actsceneline }}</div>
+<div class="col-6 pr-0 playerline">{{ line.playerline }}</div>
+<div class="col-5 small ">
+</div>
+</div>
+
+</section>
+{% endunless %}
+{% endif %}
+{% endfor %}
+

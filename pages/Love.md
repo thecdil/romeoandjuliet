@@ -10,7 +10,8 @@ permalink: /love.html
 #### Can anyone else understand what you are going through when you are consumed with **love**? 
 
 
-{% include feature/image.html objectid="MRashida.webp" width="50" %}
+{% include feature/item-figure.html objectid="MRashida.webp" width="25" %}
+
 **Muneera Rashid-** 
 Love is more than what can be expressed in words, love is more than grammar and verbs. Love is compassionate and soothing; love can be painful and gruelling, but only for growth. Love is not abusive, love is not vindictive, love is not selfish. Love will not leave you with a black eye and hating yourself. Love is the building blocks of creation, love is the substance from which we are made. From love to love by love. 
 

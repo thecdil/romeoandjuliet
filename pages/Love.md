@@ -18,10 +18,12 @@ permalink: /love.html
 
 
 **Jim-Al-Khalili-**
-Biologically love is a powerful neurological condition, like hunger or thirst only more permanent. We talk about love being blind or unconditional, in the sense that we have no control over it. But then that is not so surprising since love is basically chemistry. While lust is a temporary passionate sexual desire involving the increased release of chemicals, such as testosterone and oestrogen, in true love or attachment and bonding, the brain can release a whole set of chemicals- pheromones, dopamine, norepinephrine, serotonin, oxytocin and vasopressin.
+
+"Biologically love is a powerful neurological condition, like hunger or thirst only more permanent. We talk about love being blind or unconditional, in the sense that we have no control over it. But then that is not so surprising since love is basically chemistry. While lust is a temporary passionate sexual desire involving the increased release of chemicals, such as testosterone and oestrogen, in true love or attachment and bonding, the brain can release a whole set of chemicals- pheromones, dopamine, norepinephrine, serotonin, oxytocin and vasopressin."
 
 
 **Jojo Moyes-**
-What love is depends on where you are in relation to it. Secure in it, it can feel as mundane and necessary as air; you exist within it almost unnoticing. Deprived of it, it can feel like an obsession, all-consuming a physical pain. Love is the driver for all great stories. It is the point before consummation of it that fascinates; what separates you from love, the obstacles that stand in its way.
+
+"What love is depends on where you are in relation to it. Secure in it, it can feel as mundane and necessary as air; you exist within it almost unnoticing. Deprived of it, it can feel like an obsession, all-consuming a physical pain. Love is the driver for all great stories. It is the point before consummation of it that fascinates; what separates you from love, the obstacles that stand in its way."
 
 [Love]((https://cdn.theguardian.tv/mainwebsite/2013/11/21/131121Marriedcouple-16x9.mp4))

@@ -20,6 +20,8 @@ permalink: /love.html
 
 **Jim-Al-Khalili-**
 
+![Jim-Al-Khalili](/assets/img/Jim-Al-Khalili.jpg.webp)
+
 "Biologically love is a powerful neurological condition, like hunger or thirst only more permanent. We talk about love being blind or unconditional, in the sense that we have no control over it. But then that is not so surprising since love is basically chemistry. While lust is a temporary passionate sexual desire involving the increased release of chemicals, such as testosterone and oestrogen, in true love or attachment and bonding, the brain can release a whole set of chemicals- pheromones, dopamine, norepinephrine, serotonin, oxytocin and vasopressin."
 
 

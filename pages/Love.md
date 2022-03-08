@@ -12,7 +12,9 @@ permalink: /love.html
 
 
 **Muneera Rashid-**
-![Muneera Rashid](/assets/images/MRashida.webp)
+
+![Muneera Rashid](/assets/img/MRashida.webp)
+
 "Love is more than what can be expressed in words, love is more than grammar and verbs. Love is compassionate and soothing; love can be painful and gruelling, but only for growth. Love is not abusive, love is not vindictive, love is not selfish. Love will not leave you with a black eye and hating yourself. Love is the building blocks of creation, love is the substance from which we are made. From love to love by love."
 
 

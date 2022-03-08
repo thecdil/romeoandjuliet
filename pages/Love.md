@@ -3,7 +3,7 @@ title: Love
 layout: about
 permalink: /love.html
 ---
-# **<font color="red">What is Love?</font>**
+# **<center><font color="red">What is Love?</font></center>**
 
 #### Have you ever been in **love**? What does it feel like?
 

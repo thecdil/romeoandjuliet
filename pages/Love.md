@@ -5,20 +5,20 @@ permalink: /love.html
 ---
 # **<center><font color="red">What is Love?</font></center>**
 
-####<center>Have you ever been in **love**? What does it feel like?<center>
+<center>####Have you ever been in **love**? What does it feel like?<center>
 
-#### <center>Can anyone else understand what you are going through when you are consumed with **love**?<center> 
+<center>####Can anyone else understand what you are going through when you are consumed with **love**?<center> 
 
 
-**<center>Muneera Rashid-<center>** 
+<center>**Muneera Rashid-**<center> 
 <center>Love is more than what can be expressed in words, love is more than grammar and verbs. Love is compassionate and soothing; love can be painful and gruelling, but only for growth. Love is not abusive, love is not vindictive, love is not selfish. Love will not leave you with a black eye and hating yourself. Love is the building blocks of creation, love is the substance from which we are made. From love to love by love.<center>
 
 
-**<center>Jim-Al-Khalili-<center>** 
+<center>**Jim-Al-Khalili-**<center>
 <center>Biologically love is a powerful neurological condition, like hunger or thirst only more permanent. We talk about love being blind or unconditional, in the sense that we have no control over it. But then that is not so surprising since love is basically chemistry. While lust is a temporary passionate sexual desire involving the increased release of chemicals, such as testosterone and oestrogen, in true love or attachment and bonding, the brain can release a whole set of chemicals- pheromones, dopamine, norepinephrine, serotonin, oxytocin and vasopressin.<center> 
 
 
-**<center>Jojo Moyes-<center>** 
+<center>**Jojo Moyes-**<center> 
 <center>What love is depends on where you are in relation to it. Secure in it, it can feel as mundane and necessary as air; you exist within it almost unnoticing. Deprived of it, it can feel like an obsession, all-consuming a physical pain. Love is the driver for all great stories. It is the point before consummation of it that fascinates; what separates you from love, the obstacles that stand in its way.<center>
 
 [Love]((https://cdn.theguardian.tv/mainwebsite/2013/11/21/131121Marriedcouple-16x9.mp4))

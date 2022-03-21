@@ -1,15 +1,11 @@
 {% assign lines = site.data[site.play]  %}
-{% assign pieces = include.line-start | split: "." %}
-{% assign act = pieces[0] %}
-{% assign scene = pieces[1] %}
-{% assign start = include.line-start | split: "." | last %}
-{% assign end = include.line-end | split: "." | last  %}
+{% assign start = include.line-start  %}
+{% assign end = include.line-end  %}
 {% assign range = (start..end) %}
-{% capture clean-range %}{% for i in range %}{{act}}.{{scene}}.{{i}};{% unless forloop.last %};{% endunless %}{% endfor %}{% endcapture %}
-{% assign quoted-lines = clean-range | split: ";" %}
+{% capture range %}{% for i in range %}{{i}}{% endfor %}{% endcapture %}
 <div class="bg-light p-3 line-quote">
 {% for line in lines %}
-{% if quoted-lines contains line.actsceneline   %}
+{% if range contains line.dataline %}
 {% assign prev_i = forloop.index0 | minus: 1 %}
 {% assign prev_player = lines[prev_i].player %}
 {% assign actsceneline = line.actsceneline |split: "." | last %}
@@ -40,7 +36,7 @@
 </section>
 {% endunless %}
 {% endif %}
-{% if forloop.last %}<p class="text-right"><a href="{{ '/' | relative_url}}#{{ include.line-start }}" class="stretched-link"><i>{{ include.line-start }}{% if include.line-end %} - {{ include.line-end }}{% endif %}</i></a></p>{% endif %}
+{% if forloop.last %}<p class="text-right"><a href="{{ '/' | relative_url}}#{{ include.line-start }}" class="stretched-link"><i>Datalines {{ include.line-start }}{% if include.line-end %} - {{ include.line-end }}{% endif %}</i></a></p>{% endif %}
 {% endfor %}
 
 </div>

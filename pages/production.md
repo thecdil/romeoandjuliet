@@ -86,86 +86,38 @@ In this section, Emily Cornelius details information about adaptations of *A Mid
 Several times through the action of the play, the characters speak of or to the act of singing and dancing. There are many words that would suggest singing and dancing such as “roundel” for dance. However, the context of the meaning of the words that convey the action of singing or dancing can also shift the interpretation based on the characters and what action they mean to convey. In Act 4, when Bottom thinks to himself to ask Peter Quince to make a “ballad” of his dream, he is speaking of a ballad type poem set to music (today’s opera). When he says “sing” he means to deliver prose through affected speech like reading poetry but we might hear that phrase today to mean he would sing a song or aria.  Whereas, in Act 5, Theseus asks “what masques, what dances” - when you look up the definition of [Masques](https://www.britannica.com/art/masque) you can see they were staged dances popular in this period - but they told stories (today’s ballet) whereas dance was not required to do so. Below are some examples of discussions of music and dance in the play. 
 
 
-{% include feature/line-quote.html line-start="67652" line-end="67654" %}
-
-### Act II, Scene 2: [link to text dataline 67652] 
-
-Titania: “Come now, a roundel and a fairy song."  
+{% include feature/dataline-quote.html line-start="67652" line-end="67654" %}
 
 
-### Act 4, Scene 1. Line 85 [link to text dataline 67652] 
 
-Titania: “Music, ho! Music such as charmeth speak” 
+{% include feature/line-quote.html line-start="4.1.85" line-end="4.1.87" %}
+
 
  
 
-### Act Five, Scene 1, Lines 381-390 [link to text datalines 69247-69256] 
+### Act Five, Scene 1, Lines 381-390 [link to text datalines 69247-69256]  -- Line Quote
 
-Oberon: "Through the house give glimmering light,  
-By the dead and drowsy fire:  
-Every elf and fairy sprite  
-Hop as light as bird from brier;   
-And this ditty, after me,  
-Sing, and dance it trippingly." 
-
-Titania: "First, rehearse your song by rote  
-To each word a warbling note:  
-Hand in hand, with fairy grace,  
-Will we sing, and bless this place.” 
+{% include feature/line-quote.html line-start="5.1.381" line-end="5.1.390" %}
 
  
 
-### Act 4, Scene 1; Lines 88-92  [link to lines 68641-68645] 
+### Act 4, Scene 1; Lines 88-92  [link to lines 68641-68645]  == Data Line Quote
 
-Oberon: “Come my queen, take hands with me 
+{% include feature/dataline-quote.html line-start="68641" line-end="68641" %}
 
-and rock the ground whereon these sleepers be.” 
 
  
 
 ### Act 5, Scene 1: Lines 34-44  [link to datalines 68870-68880] 
 
-Theseus: “Come now, what masques, what dances 
-
-shall we have to wear away this long age of three hours 
-
-Between our supper and bedtime 
-
-our after-supper and bedtime? 
-
-Where is our usual manager of mirth? 
-
-What revels are in hand? Is there no play 
-
-To ease the anguish of a torturing hour? 
-
-Call Philostrate. 
-
-Philostrate:, coming forward Here, mighty Theseus. 
-
-Theseus: Say what abridgment have you for this evening, 
-
-What masque, what music? How shall we beguile 
-
-The lazy time if not with some delight? 
+{% include feature/line-quote.html line-start="5.1.34" line-end="5.1.44" %}
 
  
 
 ### Act 4, Scene 1; Lines 220-225 [link to datalines 68780 – 68785] 
 
-Bottom: “The eye of man hath not heard, the ear of man 
-hath not seen, man's hand is not able to taste, his 
-tongue to conceive, nor his heart to report, what 
-my dream was. I will get Peter Quince to write a 
+{% include feature/dataline-quote.html line-start="68780" line-end="68785" %}
 
-ballad of this dream: it shall be called Bottom's 
-
-Dream, because it hath no bottom; and I will 
-sing it in the latter end of a play, before the Duke. 
-
-Per adventure, to make it the more gracious, I shall 
-
-sing it at her death.” 
 
 
 ### Exercise  

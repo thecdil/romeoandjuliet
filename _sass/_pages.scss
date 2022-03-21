@@ -56,10 +56,10 @@
         margin: 1.5rem auto 1rem;
     }
     
-    p, .about-narrowed-content, .footnotes, ol, ul, .accordion, .blockquote {
+    p, .about-narrowed-content, .footnotes, ol, ul, .accordion, .blockquote, section, .line-quote{
         margin-left: auto;
         margin-right: auto;
-        max-width: 650px;
+        max-width: 750px;
     }
 
 }

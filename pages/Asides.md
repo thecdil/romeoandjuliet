@@ -13,4 +13,4 @@ How does this effect the audience's relationship witht that chracter?
 Does it make them complicit in the character's plans and thoughts...does it make them an ally of sorts?
 
 
-This is a great resource to dig deeper into the nature of asides in Shakespeare with some great activities to try as well: https://education.ucdavis.edu/sites/main/files/file-attachments/asidesaudienceexpanded.pdf
+This is a great resource to dig deeper into the nature of asides in Shakespeare with some great activities to try as well: [Asides Deep Dive](https://education.ucdavis.edu/sites/main/files/file-attachments/asidesaudienceexpanded.pdf)

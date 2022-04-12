@@ -1,0 +1,123 @@
+{%- assign fields = site.data.config-browse -%}
+<script>
+{% include js/dd-items.js %}
+/* function to make each line to page */
+function makeLine(obj) {
+    var index = dd_items.findIndex(i => i.dataline== obj.dataline);
+    var prevLineNum = index - 1;
+    var prevLineObject = dd_items[prevLineNum];
+    var prevPlayer  = prevLineObject.player;
+   console.log(prevPlayer);
+  
+    if(obj.player == prevPlayer) {
+        var player;
+    } else if(obj.player) {
+        var player = obj.player;
+    }
+    else { 
+        var player;
+    }
+    
+    if(obj.annotation) {
+      var annotation = obj.annotation;
+    }
+    else { 
+        var annotation; 
+    }
+    var line = '<div class="line">'; 
+    // add player if new player to announce
+    if(player) {
+      line += '<div class="' + obj.player + ' act1scene1 act' + obj.act + 'scene' + obj.scene + ' row mt-3 playline" style=""><div class="col-1 small"></div><div class="col-8 col-md-9 font-weight-bold"><p class="mb-0 playerline">' + obj.player + ': </p></div></div>';
+    }
+    // start line
+    line += '<div id="' + obj.dataline + '" class="' + obj.player + ' act' + obj.act + 'scene' + obj.scene + ' row playline textline" style="">';
+    // add act.scene.line number
+    line += '<div class="col-1 small" id="' + obj.actsceneline + '">' + obj.actsceneline + '</div>';
+    // add the line itself
+    line += '<div class="col-6 pr-0 playerline">' + obj.playerline + '</div>';
+  // add annotation if it exists
+  if(annotation) {
+    line += '<div class="col-5 small anno-container"><div class="annotation annobutton" id="anno112" data-filter="anno112"><div class="content"><p>T' + obj.annotation + '</p></div></div></div>';
+    }
+    else {
+    line += '<div class="col-5 small"></div>';
+    }
+
+    line += '</div></div>';
+    // send back big string
+    return line;
+}
+
+
+/* function to filter items to be displayed on browse */
+function filterItems(arr,q) {
+  // dont filter if no q 
+  if (q=="") { 
+    var filteredItems = arr; 
+  } else {
+    q = q.trim().toUpperCase(); 
+    // filter items
+    var filteredItems = [];
+    for (var i = 0, len = arr.length; i < len; i++) {
+      var val = "";
+      for (var k in arr[i]) { val += arr[i][k] + " "; }
+      if(val.toUpperCase().indexOf(q) != -1){
+        filteredItems.push(arr[i]);
+      }
+    }
+  }
+  // add number 
+  $("#numberOf").html(filteredItems.length + " of " + arr.length + " items");
+  
+  // add stuff, make lines first in giant var, then add all at once to speed things up
+  var lines = "";
+  for (var i = 0, len = filteredItems.length; i < len; i++) {
+    lines += makeLine(filteredItems[i]);
+  }
+  $("#contents-container").html(lines);
+
+  // finish
+  $("#goButton").focus();
+  $("#loading").hide();
+};
+
+/* function to init browse after loading items */ 
+function pageInit(items) {
+  /* filter if hash in initial URL */
+  if(window.location.hash) {
+    query = decodeURIComponent(location.hash.substr(1));
+    $('#quickSearch').val(query);
+    filterItems(items,query);
+  } else {
+    query = "";
+    filterItems(items,query);
+  }
+}
+
+var query = "";
+
+
+   
+/* add hash if search button clicked */ 
+$('#goButton').click( function() {
+  window.location.hash = encodeURIComponent($('#quickSearch').val());
+});
+/* add hash if if enter is pressed */
+$('#quickSearch').keypress(function(e){
+  if(e.which == 13){
+      window.location.hash = encodeURIComponent($('#quickSearch').val());
+    }
+});
+/* filter if hash changes */ 
+$(window).on("hashchange", function() {
+  // show spinner
+  $("#loading").show();
+  // read hash
+  query = decodeURIComponent(location.hash.substr(1));
+  $('#quickSearch').val(query);
+  // filter
+  filterItems(dd_items,query);
+});
+
+
+</script>

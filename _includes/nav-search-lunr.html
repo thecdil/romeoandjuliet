@@ -1,12 +1,12 @@
 <script>
     function site_search() {
         var query = document.getElementById("site-search").value;
-        window.open("{{ '/search/index.html' | absolute_url }}?q=" + encodeURIComponent(query), "_self" );
+        window.open("{{ '/search/index.html' | relative_url }}?q=" + encodeURIComponent(query), "_self" );
     }
 </script>
 <form class="form-inline my-2 my-lg-0" role="search" id="search" onsubmit="site_search(); return false;">
     <div class="input-group">
-        <input id="site-search" class="form-control " type="text" placeholder="Search the Collection" aria-label="Search box">
+        <input id="site-search" class="form-control " type="text" placeholder="Search" aria-label="Search box">
         <div class="input-group-append">
             <button class="btn btn-light" type="submit">
                 <span id="search-icon"><svg viewBox="0 0 1024 974" height="16px" width="20px"><path d="M960 832L710.875 582.875C746.438 524.812 768 457.156 768 384 768 171.96900000000005 596 0 384 0 171.969 0 0 171.96900000000005 0 384c0 212 171.969 384 384 384 73.156 0 140.812-21.562 198.875-57L832 960c17.5 17.5 46.5 17.375 64 0l64-64C977.5 878.5 977.5 849.5 960 832zM384 640c-141.375 0-256-114.625-256-256s114.625-256 256-256 256 114.625 256 256S525.375 640 384 640z"/></svg></span>
@@ -15,3 +15,11 @@
         </div>
     </div>
 </form>
+<button class="btn btn-warning ml-3" onclick="reset_dd_items();" title="Refresh Collection Data">
+    <span id="refresh-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+      </svg></span>
+    <span class="sr-only">Refresh Collection Data</span>
+</button>
+

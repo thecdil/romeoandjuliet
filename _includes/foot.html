@@ -3,7 +3,8 @@
 <script src="{{ '/assets/lib/bootstrap.bundle.min.js' | relative_url }}"></script>
 <!-- load other js -->
 <script src="{{ '/assets/lib/lazysizes.min.js' | absolute_url }}" async></script>
-{% if page.layout == "playscript" %}{% include js/transcript-js.html %}{% include js/annotation-js.html %}{% endif %}
+<script src="{{ '/assets/lib/papaparse.min.js' | relative_url }}"></script>
+{% if page.layout == "playscript" %}{% include js/lines-js.html %}{% include js/annotation-js.html %}{% endif %}
 {% if page.layout == "visualization" %}{% include js/visualization-js.html %}{% endif %}
 {% if layout.gallery == true or page.gallery == true %}{% include js/gallery-js.html %}{% endif %}
 {% if page.layout == "item" %}{% include js/item-js.html %}{% endif %}
@@ -14,4 +15,4 @@
 {% if page.layout == "search" %}{% include js/lunr-js.html %}{% endif %}
 {% if page.layout == "browse" %}{% include js/browse-js.html %}{% endif %}
 {% if page.layout == "timeline" or page.layout == "playscript" %}{% include js/timeline-js.html %}{% endif %}
-{% if page.layout == "home-infographic" %}{% include js/carousel-js.html %}{% endif %}
+

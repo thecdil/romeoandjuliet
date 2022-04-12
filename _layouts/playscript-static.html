@@ -1,0 +1,139 @@
+---
+layout: default
+---
+
+{% assign lines = site.data[site.play]  %}
+
+{%- comment -%} find all words used in the player field of our metadata {%- endcomment -%}
+{% capture players_play %}{% for line in lines %}{% unless line.player == "ACT" or line.player == "SCENE" %}{{- line.player -}};{% endunless %}{% endfor %}{% endcapture%}
+{%- assign players = players_play | split: ";" -%}
+{%- assign uniquePlayers = players | uniq -%}
+
+{%- comment -%} find all acts and sences {%- endcomment -%}
+{%- assign uniqueScenes = lines | map: 'actscene' | compact | uniq -%}
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-12">
+            <h1>{{ site.play_title }}</h1>
+        </div>
+      
+    </div>
+    
+    <div class="row my-3 sticky-top bg-white border-bottom border-left border-right">
+        
+        <div class="col-md-3">
+            <p class="pt-4">
+                <select id="scenes" title="Jump to a year" class="filteroptions filters px-3 py-2" style="max-width: 100%;">
+                    <option value="#" class="reset" selected="selected reset">Filter by Scene</option>
+                    {% for filter in uniqueScenes %}
+                    <option value="act{{ filter | replace: '.','scene' }}">Act {{ filter | replace: '.',' Scene ' }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+        </div>
+        <div class="col-md-3">
+            <p class="pt-4">
+                <select id="players" title="Jump to a year" class="filteroptions filters px-3 py-2" style="max-width: 100%;">
+                    <option value="#" class="reset" selected="selected reset">Filter by Player</option>
+                    {% for filter in uniquePlayers %}
+                    <option value="{{ filter }}">{{ filter | capitalize }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <div id="scriptsearch" class="bg-lightr">
+                <div class="row pt-4">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="goButton" id="quicksearch" >
+                            <div class="input-group-append">
+                              <button class="btn btn-primary rounded-right border-light input-group-text" type="submit" title="Search" alt="Search" id="goButton" onclick="filterItems()">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="reset btn btn-sm btn-secondary mt-1" href="#" data-filter="">Reset Filters</button>
+                        <h5 class="d-none linecount" ><span class="info2"><span id="numberof">{{ lines | size }}</span> of {{ lines | size }} lines</span></h5>
+
+                    </div>
+                </div>
+                    <!--<div class="filteroptions mx-2 p-4 mb-4">
+                        <div class="form-inline my-2 my-lg-0 ">
+                            <div class="input-group input-group-lg">
+                            <input type="text" id="quicksearch" placeholder="Search ... " class="searchinput form-control form-control-lg mr-2 col-4">
+                            <input class="searchinput mx-2 btn btn-sm btn-primary col-2" title="Search" value="Go" alt="Search" id="goButton" onclick="filterItems()">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary rounded-right border-light" type="submit" title="Search" alt="Search" id="goButton" onclick="filterItems()">Search</button>
+                            </div>
+                        </div>
+                        </div>-->
+                </div>
+               </div>
+   
+        
+     
+    </div>
+    <div id="contents-container">
+        {% for line in lines %}
+        {% assign prev_i = forloop.index0 | minus: 1 %}
+        {% assign prev_player = lines[prev_i].player %}
+        {% assign actsceneline = line.actsceneline |split: "." | last %}
+        {% assign numline = actsceneline | times: 1 %}
+        {% unless line.actsceneline %}
+        <section class="searchline pl-3">
+            <div id="{{ line.dataline }}" class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row my-4 playline ml-4 playerline">
+                <p><em>{{line.playerline}}</em></p>
+            </div>
+        </section>
+        {% else %}
+        <section class="searchline pl-3">
+        {% unless line.player == prev_player %}
+        <div class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row mt-3 playline">
+            <div class="col-1 small"></div>
+            <div class="col-8 col-md-9 font-weight-bold">
+                <p class="mb-0 playerline">
+                    {{line.player | remove: ":"}}: </p>
+            </div>
+        </div>
+        {% endunless %}
+        {% if line.annotation %}
+        {% capture annotationid %}{% if line.annotation contains 'ibid' %}{% capture adjustment %}{{ line.annotation | replace: 'ibid','' | times: 1 }}{% endcapture %}anno{{line.actscene | replace: '.',''}}{{ numline | minus: adjustment}}{% else %}anno{{line.actsceneline | replace: '.',''}}{% endif %}{% endcapture %}
+        <div id="{{ line.dataline }}" class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row playline textline">
+            <div class="col-1 small" id="{{ line.actsceneline }}">{% if page.actscene contains 'ALL' %}{{ line.actsceneline }}{% else %}{{ actsceneline }}{% endif %}</div>
+            <div class="col-6 pr-0 playerline annobutton annotated {% unless line.annotation contains "ibid" %}mt-1{% endunless%}" data-filter="{{ annotationid }}">{% if line.highlight %}{% capture hilite %}<span class="hilite hi-{{ annotationid }}" data-filter="hi-{{ annotationid }}">{{line.highlight}}</span>{% endcapture %}{{ line.playerline | replace: line.highlight, hilite }}{% else %}{{line.playerline}}{% endif %}</div>
+            <div class="col-5 small anno-container">
+                
+                <div class="annotation annobutton" id="{{ annotationid }}" data-filter="{{ annotationid }}">
+                    <div class="content">
+                    {% unless line.annotation contains "ibid" %}
+                    {{ line.annotation | markdownify }}
+                    {% endunless %}
+                    {% if line.objectid %}
+                    {% include feature/item-figure.html objectid=line.objectid %}
+                    {% endif %}
+                </div>
+                </div>
+               
+            </div>
+        </div>
+        
+        {% else %}
+        <div id="{{ line.dataline }}" class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row playline textline">
+            <div class="col-1 small" id="{{ line.actsceneline }}">{% if page.actscene contains 'ALL' %}{{ line.actsceneline }}{% else %}{{ actsceneline }}{% endif %}</div>
+            <div class="col-6 pr-0 playerline">{{ line.playerline }}</div>
+            <div class="col-5 small ">
+            </div>
+        </div>
+        {% endif %}
+        </section>
+        {% endunless %}
+        {% endfor %}
+    </div>
+    <div class="my-4">
+        <hr />
+        <hr />
+
+    </div>
+</div>

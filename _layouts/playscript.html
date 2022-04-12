@@ -26,9 +26,7 @@ layout: default
             <p class="pt-4">
                 <select id="scenes" title="Jump to a year" class="filteroptions filters px-3 py-2" style="max-width: 100%;">
                     <option value="#" class="reset" selected="selected reset">Filter by Scene</option>
-                    {% for filter in uniqueScenes %}
-                    <option value="act{{ filter | replace: '.','scene' }}">Act {{ filter | replace: '.',' Scene ' }}</option>
-                    {% endfor %}
+                    
                 </select>
             </p>
         </div>
@@ -36,9 +34,7 @@ layout: default
             <p class="pt-4">
                 <select id="players" title="Jump to a year" class="filteroptions filters px-3 py-2" style="max-width: 100%;">
                     <option value="#" class="reset" selected="selected reset">Filter by Player</option>
-                    {% for filter in uniquePlayers %}
-                    <option value="{{ filter }}">{{ filter | capitalize }}</option>
-                    {% endfor %}
+                    
                 </select>
             </p>
         </div>
@@ -76,60 +72,7 @@ layout: default
      
     </div>
     <div id="contents-container">
-        {% for line in lines %}
-        {% assign prev_i = forloop.index0 | minus: 1 %}
-        {% assign prev_player = lines[prev_i].player %}
-        {% assign actsceneline = line.actsceneline |split: "." | last %}
-        {% assign numline = actsceneline | times: 1 %}
-        {% unless line.actsceneline %}
-        <section class="searchline pl-3">
-            <div id="{{ line.dataline }}" class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row my-4 playline ml-4 playerline">
-                <p><em>{{line.playerline}}</em></p>
-            </div>
-        </section>
-        {% else %}
-        <section class="searchline pl-3">
-        {% unless line.player == prev_player %}
-        <div class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row mt-3 playline">
-            <div class="col-1 small"></div>
-            <div class="col-8 col-md-9 font-weight-bold">
-                <p class="mb-0 playerline">
-                    {{line.player | remove: ":"}}: </p>
-            </div>
-        </div>
-        {% endunless %}
-        {% if line.annotation %}
-        {% capture annotationid %}{% if line.annotation contains 'ibid' %}{% capture adjustment %}{{ line.annotation | replace: 'ibid','' | times: 1 }}{% endcapture %}anno{{line.actscene | replace: '.',''}}{{ numline | minus: adjustment}}{% else %}anno{{line.actsceneline | replace: '.',''}}{% endif %}{% endcapture %}
-        <div id="{{ line.dataline }}" class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row playline textline">
-            <div class="col-1 small" id="{{ line.actsceneline }}">{% if page.actscene contains 'ALL' %}{{ line.actsceneline }}{% else %}{{ actsceneline }}{% endif %}</div>
-            <div class="col-6 pr-0 playerline annobutton annotated {% unless line.annotation contains "ibid" %}mt-1{% endunless%}" data-filter="{{ annotationid }}">{% if line.highlight %}{% capture hilite %}<span class="hilite hi-{{ annotationid }}" data-filter="hi-{{ annotationid }}">{{line.highlight}}</span>{% endcapture %}{{ line.playerline | replace: line.highlight, hilite }}{% else %}{{line.playerline}}{% endif %}</div>
-            <div class="col-5 small anno-container">
-                
-                <div class="annotation annobutton" id="{{ annotationid }}" data-filter="{{ annotationid }}">
-                    <div class="content">
-                    {% unless line.annotation contains "ibid" %}
-                    {{ line.annotation | markdownify }}
-                    {% endunless %}
-                    {% if line.objectid %}
-                    {% include feature/item-figure.html objectid=line.objectid %}
-                    {% endif %}
-                </div>
-                </div>
-               
-            </div>
-        </div>
         
-        {% else %}
-        <div id="{{ line.dataline }}" class="{{ line.player }} {{ line.actscene | replace: '.','scene'| prepend: 'act' }} row playline textline">
-            <div class="col-1 small" id="{{ line.actsceneline }}">{% if page.actscene contains 'ALL' %}{{ line.actsceneline }}{% else %}{{ actsceneline }}{% endif %}</div>
-            <div class="col-6 pr-0 playerline">{{ line.playerline }}</div>
-            <div class="col-5 small ">
-            </div>
-        </div>
-        {% endif %}
-        </section>
-        {% endunless %}
-        {% endfor %}
     </div>
     <div class="my-4">
         <hr />

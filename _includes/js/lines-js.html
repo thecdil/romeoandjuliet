@@ -4,12 +4,15 @@
 /* function to make each line to page */
 function makeLine(obj) {
     var index = dd_items.findIndex(i => i.dataline== obj.dataline);
-    var prevLineNum = index - 1;
+    if (index == 0) {}
+    else{
+    var prevLineNum = index -1 ;
     var prevLineObject = dd_items[prevLineNum];
-    var prevPlayer  = prevLineObject.player;
-   console.log(prevPlayer);
+    var prevPlayer = prevLineObject.player;
   
     if(obj.player == prevPlayer) {
+        var player;
+    } else if (obj.player == "StageDirection") {
         var player;
     } else if(obj.player) {
         var player = obj.player;
@@ -17,13 +20,31 @@ function makeLine(obj) {
     else { 
         var player;
     }
+  }
     
     if(obj.annotation) {
-      var annotation = obj.annotation;
+      
+      if (obj.annotation.includes("ibid")){
+        var subtractingNumber = parseInt(obj.annotation.replace("ibid",""));
+        var ibid = obj.annotation;
+        var annoId = 'anno' + Number(obj.dataline) - subtractingNumber;
+      } else{ 
+        var annotation = obj.annotation;
+        annoId = 'anno' + obj.dataline;
+      }
     }
     else { 
         var annotation; 
     }
+
+    if(obj.highlight) {
+      var hilite = '<span class="hilite hi-'+ annoId + '" data-filter="hi-'+ annoId + '">'+ obj.highlight +'</span>';
+      var playerline = obj.playerline.replace(obj.highlight,hilite); }
+      else{
+        var playerline = obj.playerline;
+      }
+
+
     var line = '<div class="line">'; 
     // add player if new player to announce
     if(player) {
@@ -34,12 +55,18 @@ function makeLine(obj) {
     // add act.scene.line number
     line += '<div class="col-1 small" id="' + obj.actsceneline + '">' + obj.actsceneline + '</div>';
     // add the line itself
-    line += '<div class="col-6 pr-0 playerline">' + obj.playerline + '</div>';
-  // add annotation if it exists
+    
+  // add playerline and annotation  if it exists
   if(annotation) {
-    line += '<div class="col-5 small anno-container"><div class="annotation annobutton" id="anno112" data-filter="anno112"><div class="content"><p>T' + obj.annotation + '</p></div></div></div>';
+    line += '<div class="col-6 pr-0 playerline col-6 annobutton annotated mt-1" data-filter="'+ annoId + '">' + playerline + '</div>';
+    line += '<div class="col-5 small anno-container"><div class="annotation annobutton '+ annoId + '" data-filter="' + annoId + '"><div class="content"><p>' + obj.annotation + '</p></div></div></div>';
+    }
+    else if (ibid){
+      line += '<div class="col-6 pr-0 playerline col-6 annobutton annotated" data-filter="'+ annoId + '">' + playerline + '</div>';
+    line += '<div class="col-5 small anno-container"><div class="annotation annobutton '+ annoId + '" data-filter="' + annoId + '"><div class="content"><p> </p></div></div></div>';
     }
     else {
+    line += '<div class="col-6 pr-0 playerline">' + playerline + '</div>';
     line += '<div class="col-5 small"></div>';
     }
 
@@ -74,10 +101,10 @@ function filterItems(arr,q) {
   for (var i = 0, len = filteredItems.length; i < len; i++) {
     lines += makeLine(filteredItems[i]);
   }
+  
   $("#contents-container").html(lines);
 
   // finish
-  $("#goButton").focus();
   $("#loading").hide();
 };
 
@@ -91,6 +118,7 @@ function pageInit(items) {
   } else {
     query = "";
     filterItems(items,query);
+    console.log(dd_actscenes);
   }
 }
 
@@ -117,6 +145,7 @@ $(window).on("hashchange", function() {
   $('#quickSearch').val(query);
   // filter
   filterItems(dd_items,query);
+ 
 });
 
 

@@ -9,31 +9,38 @@ function makeLine(obj) {
     var prevLineNum = index -1 ;
     var prevLineObject = dd_items[prevLineNum];
     var prevPlayer = prevLineObject.player;
-  
-    if(obj.player == prevPlayer) {
-        var player;
-        var playerClass = obj.player.replace(' ','');
-    } else if (obj.player == "StageDirection") {
-        var player;
-        var playerClass = obj.player;
-    } else if(obj.player) {
-        var player = obj.player;
-        var playerClass = obj.player.replace(' ','');
-    }
-    else { 
-        var player;
-        var playerClass = obj.player.replace(' ','');
-    }
   }
+
+  if (obj.player == "StageDirection") {
+        var player;
+        if (obj.playerline.toLowerCase().startsWith("act ")){
+          var playerClass = "StageDirection actstart";  
+        }
+        else if (obj.playerline.toLowerCase().startsWith("scene ")){
+          var playerClass = "StageDirection scenestart";  
+        }
+        else  {
+          var playerClass = "StageDirection";  
+        }
+      }
+    else if(obj.player == prevPlayer) {
+        var player;
+        var playerClass = obj.player.replace(' ','');  
+
+    }
+     else  {
+        var player = obj.player;
+        var playerClass = obj.player.replace(' ','');  
+
+    }
     
     if(obj.annotation) {
-      
       if (obj.annotation.includes("ibid")){
         var subtractingNumber = parseInt(obj.annotation.replace("ibid",""));
         var mainNumber = parseInt(obj.dataline) - subtractingNumber;
         var ibid = obj.annotation;
         var annoId = 'anno' + mainNumber;
-      } else{ 
+      } else { 
         // load markdownit library
         var md = window.markdownit();
         var annotation = md.renderInline(obj.annotation);
@@ -55,7 +62,7 @@ function makeLine(obj) {
     var line = '<div class="line">'; 
     // add player if new player to announce
     if(player) {
-      line += '<div class="' + playerClass + ' act' + obj.act + 'scene' + obj.scene + ' row mt-3 playline" style=""><div class="col-1 small"></div><div class="col-8 col-md-9 font-weight-bold"><p class="mb-0 playerline">' + obj.player + ': </p></div></div>';
+      line += '<div class="' + playerClass + ' act' + obj.act + 'scene' + obj.scene + ' row mt-4 playline" style=""><div class="col-1 small"></div><div class="col-8 col-md-9 font-weight-bold"><p class="mb-0 playerline">' + obj.player + ': </p></div></div>';
     }
     // start line
     line += '<div id="' + obj.dataline + '" class="' + playerClass + ' act' + obj.act + 'scene' + obj.scene + ' row playline textline" style="">';
@@ -102,55 +109,43 @@ function filterItems(arr,q) {
   }
   // add number 
   $("#numberOf").html(filteredItems.length + " of " + arr.length + " items");
-  
-  // add stuff, make lines first in giant var, then add all at once to speed things up
+    // add stuff, make lines first in giant var, then add all at once to speed things up
   var lines = "";
   for (var i = 0, len = filteredItems.length; i < len; i++) {
     lines += makeLine(filteredItems[i]);
   }
-  
-
-
-
   $("#contents-container").html(lines);
 
   // finish
   $("#loading").hide();
 };
 
-function selectScenes(arr) {
-  var options = "";
-  for (var i = 0, len = arr.length; i < len; i++) {
-    var act = arr[i].split('.')[0];
-    var scene = arr[i].split('.')[1];
-    var sceneClass = 'act' + act + 'scene' + scene;
-    options += '<option value="'+sceneClass+'">Act ' + act + ', Scene ' + scene +'</option>';
-  }
-  $("#scenes").html(options);
-}
 
 function selectPlayers(arr) {
-  var options = "";
+  var options = '<option value="#" class="reset" selected="selected reset">Filter by Player</option>';
   var unique = [... new Set(arr)];
   for (var i = 0, len = unique.length; i < len; i++) {
     var charClass = unique[i].replace(' ','');
     options += '<option value="'+charClass+'">'+unique[i]+'</option>';
   }
   $("#players").html(options);
-  console.log(arr);
 }
 
 function selectScenes(arr) {
-  var options = "";
+  var options = '<option value="#" class="reset" selected="selected reset">Filter by Scene</option>';
+  var scenesNav = '';
   for (var i = 0, len = arr.length; i < len; i++) {
     var act = arr[i].split('.')[0];
     var scene = arr[i].split('.')[1];
     var sceneClass = 'act' + act + 'scene' + scene;
     options += '<option value="'+sceneClass+'">Act ' + act + ', Scene ' + scene +'</option>';
+    scenesNav += '<a class="dropdown-item scene-drop" href="?scene=act' + act + 'scene' + scene +'">Act ' + act + ', Scene ' + scene +'</a>'
   }
   $("#scenes").html(options);
-  console.log(arr);
+  $("#scenesNavDropdown").html(scenesNav);
+
 }
+
 
 /* function to init browse after loading items */ 
 function pageInit(items) {
@@ -159,18 +154,17 @@ function pageInit(items) {
     query = decodeURIComponent(location.hash.substr(1));
     $('#quickSearch').val(query);
     filterItems(items,query);
-    selectScenes(scenes);
+   
   } else {
     query = "";
-    filterItems(items,query);
     dd_actscenes = $.unique(items.map(function (d) {return d.actscene;}));
     dd_players = $.unique(items.map(function (d) {return d.player;}));
     selectScenes(dd_actscenes);
     selectPlayers(dd_players);
+    filterItems(items,query);
   }
 }
 
-var query = "";
 
 
    

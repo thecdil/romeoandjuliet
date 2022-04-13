@@ -31,7 +31,10 @@ author: CollectionBuilder
 # SITE SETTINGS
 #
 # title of site appears in banner
-play: https://docs.google.com/spreadsheets/d/e/2PACX-1vTqThHhW7kX9GoT37IB8xYUEB4K74gkSBtP9Lri58QelNVTSExuEhzGQZclCFo7hYAUKDOufvCCrjyI/pub?gid=404955959&single=true&output=csv
+# romeo and juliet play: https://docs.google.com/spreadsheets/d/e/2PACX-1vTqThHhW7kX9GoT37IB8xYUEB4K74gkSBtP9Lri58QelNVTSExuEhzGQZclCFo7hYAUKDOufvCCrjyI/pub?gid=404955959&single=true&output=csv
+# midsummer 
+play: https://docs.google.com/spreadsheets/d/e/2PACX-1vT4-hSjZe4pN0R2-fzmNyc_yrE355W1RgOBmYJ4PF-Lsyo1bKpWVKgwYqGOxGnMvvV41__J66Yjyxa1/pub?gid=651170933&single=true&output=csv
+# henry v play: https://docs.google.com/spreadsheets/d/e/2PACX-1vTiBb7vwlfPv0Y1JEtAUkecHtgkmPT0lHgSvuWhKyhUYfJPAaEtNxYtfDEkxmaiJ1rPeJxu41_9WAwf/pub?gid=0&single=true&output=csv
 play_title: A Midsummer Night's Dream
 
 ##########

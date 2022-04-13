@@ -1,0 +1,27 @@
+---
+layout: about
+title: Home
+permalink: index.html
+---
+
+<p>It seems that you don't have any thing configured! </p>
+<p>This page can temporarily configure the site to test our your CollectionBuilder data. The configurations are stored in your browser's session storage, so will remain only until you close this window!</p>
+
+<div class="card my-5" id="fileSelectCard">
+    <div class="card-body">
+        <h2>Select Metadata</h2>
+        <!-- current configured csv display? -->
+        <p>If you would like to test a CSV, use one of the options below.</p>
+
+        <p>Select a metadata CSV from your local computer:</p>
+        <div class="custom-file mb-3">
+            <input type="file" accept=".csv" class="custom-file-input" id="selectFile">
+            <label class="custom-file-label" for="selectFile">Choose metadata CSV file</label>
+        </div>
+
+        <p>Paste in the full link for a CSV hosted online (such as published Google Sheets):</p>
+        <label for="csv-url">Enter an URL to the CSV:</label>
+        <input type="url" name="csv-url" id="csvurl" class="form-control" pattern="https://.*">
+    </div>
+</div>
+

@@ -1,7 +1,7 @@
 ---
 title: the play         
 layout: playscript
-permalink: /index.html
+permalink: /play.html
 ---
 
 

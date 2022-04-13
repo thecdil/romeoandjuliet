@@ -6,7 +6,8 @@
     var annotation = $(this).data("filter");
     $("div").not("#" + annotation).removeClass("annotate-show");
     $("#" + annotation).toggleClass('annotate-show');
-    console.log(annotation)
+    $("span.hilite").not(".hi-" + annotation).removeClass('font-weight-bold');
+    $(".hi-" + annotation).toggleClass('font-weight-bold');
   });
 
   $(".hilite").hover(function () {

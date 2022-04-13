@@ -19,3 +19,10 @@
 {% if page.layout == "browse" %}{% include js/browse-js.html %}{% endif %}
 {% if page.layout == "timeline" or page.layout == "playscript" %}{% include js/timeline-js.html %}{% endif %}
 
+{% if page.custom-foot or layout.custom-foot %}
+{%- assign page_feet = page.custom-foot | split: ";" -%}
+{%- assign layout_feet = layout.custom-foot | split: ";" -%}
+{%- assign feet = page_feet | concat: layout_feet -%}
+{% for f in feet %}{% include {{ f }} %}
+{% endfor %}
+{%- endif -%}

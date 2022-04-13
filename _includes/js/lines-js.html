@@ -26,10 +26,13 @@ function makeLine(obj) {
       
       if (obj.annotation.includes("ibid")){
         var subtractingNumber = parseInt(obj.annotation.replace("ibid",""));
+        var mainNumber = parseInt(obj.dataline) - subtractingNumber;
         var ibid = obj.annotation;
-        var annoId = 'anno' + Number(obj.dataline) - subtractingNumber;
+        var annoId = 'anno' + mainNumber;
       } else{ 
-        var annotation = obj.annotation;
+        // load markdownit library
+        var md = window.markdownit();
+        var annotation = md.renderInline(obj.annotation);
         annoId = 'anno' + obj.dataline;
       }
     }
@@ -56,13 +59,13 @@ function makeLine(obj) {
     line += '<div class="col-1 small" id="' + obj.actsceneline + '">' + obj.actsceneline + '</div>';
     // add the line itself
     
-  // add playerline and annotation  if it exists
+  // add playerline andannotation  if it exists
   if(annotation) {
     line += '<div class="col-6 pr-0 playerline col-6 annobutton annotated mt-1" data-filter="'+ annoId + '">' + playerline + '</div>';
-    line += '<div class="col-5 small anno-container"><div class="annotation annobutton '+ annoId + '" data-filter="' + annoId + '"><div class="content"><p>' + obj.annotation + '</p></div></div></div>';
+    line += '<div class="col-5 small anno-container"><div class="annotation annobutton" id="'+ annoId + '" data-filter="' + annoId + '"><div class="content"><p>' + annotation + '</p></div></div></div>';
     }
     else if (ibid){
-      line += '<div class="col-6 pr-0 playerline col-6 annobutton annotated" data-filter="'+ annoId + '">' + playerline + '</div>';
+      line += '<div class="col-6 pr-0 playerline col-6 annobutton annotated '+ annoId + '" data-filter="'+ annoId + '">' + playerline + '</div>';
     line += '<div class="col-5 small anno-container"><div class="annotation annobutton '+ annoId + '" data-filter="' + annoId + '"><div class="content"><p> </p></div></div></div>';
     }
     else {

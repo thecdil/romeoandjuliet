@@ -4,6 +4,9 @@
 <!-- load other js -->
 <script src="{{ '/assets/lib/lazysizes.min.js' | absolute_url }}" async></script>
 <script src="{{ '/assets/lib/papaparse.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/lib/markdown-it.min.js' | relative_url }}"></script>
+
+
 {% if page.layout == "playscript" %}{% include js/lines-js.html %}{% include js/transcript-js.html %}{% include js/annotation-js.html %}{% endif %}
 {% if page.layout == "visualization" %}{% include js/visualization-js.html %}{% endif %}
 {% if layout.gallery == true or page.gallery == true %}{% include js/gallery-js.html %}{% endif %}

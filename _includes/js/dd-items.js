@@ -1,21 +1,15 @@
 /* Load items from Sheets, store in sessionStorage, or load from sessionStorage */
 var dd_items = [];
-var dd_actscenes = [];
-var dd_players = [];
 
 // function to process items from Sheets and store
 function dd_items_init(results) {
   dd_items = results.data.filter(item => item["dataline"]);
-  dd_actscenes = $.unique(dd_items.map(function (d) {return d.actscene;}));
-  sessionStorage.setItem("dd_items_store", JSON.stringify(dd_items));
-  sessionStorage.setItem("dd_actscenes_store", JSON.stringify(dd_actscenes));
-  sessionStorage.setItem("dd_char_store", JSON.stringify(dd_players));
-  pageInit(dd_items,dd_actscenes);
+  pageInit(dd_items);
 }
 // check for sessionStored items
 if (sessionStorage.getItem("dd_items_store")) {
   dd_items = JSON.parse(sessionStorage.getItem("dd_items_store"));
-  pageInit(dd_items,dd_actscenes);
+  pageInit(dd_items);
 
 } else { 
   /* use papaparse to get metadata from google sheets, then init page */

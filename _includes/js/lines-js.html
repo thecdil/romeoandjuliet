@@ -12,13 +12,17 @@ function makeLine(obj) {
   
     if(obj.player == prevPlayer) {
         var player;
+        var playerClass = obj.player.replace(' ','');
     } else if (obj.player == "StageDirection") {
         var player;
+        var playerClass = obj.player;
     } else if(obj.player) {
         var player = obj.player;
+        var playerClass = obj.player.replace(' ','');
     }
     else { 
         var player;
+        var playerClass = obj.player.replace(' ','');
     }
   }
     
@@ -51,10 +55,10 @@ function makeLine(obj) {
     var line = '<div class="line">'; 
     // add player if new player to announce
     if(player) {
-      line += '<div class="' + obj.player + ' act1scene1 act' + obj.act + 'scene' + obj.scene + ' row mt-3 playline" style=""><div class="col-1 small"></div><div class="col-8 col-md-9 font-weight-bold"><p class="mb-0 playerline">' + obj.player + ': </p></div></div>';
+      line += '<div class="' + playerClass + ' act' + obj.act + 'scene' + obj.scene + ' row mt-3 playline" style=""><div class="col-1 small"></div><div class="col-8 col-md-9 font-weight-bold"><p class="mb-0 playerline">' + obj.player + ': </p></div></div>';
     }
     // start line
-    line += '<div id="' + obj.dataline + '" class="' + obj.player + ' act' + obj.act + 'scene' + obj.scene + ' row playline textline" style="">';
+    line += '<div id="' + obj.dataline + '" class="' + playerClass + ' act' + obj.act + 'scene' + obj.scene + ' row playline textline" style="">';
     // add act.scene.line number
     line += '<div class="col-1 small" id="' + obj.actsceneline + '">' + obj.actsceneline + '</div>';
     // add the line itself
@@ -105,23 +109,64 @@ function filterItems(arr,q) {
     lines += makeLine(filteredItems[i]);
   }
   
+
+
+
   $("#contents-container").html(lines);
 
   // finish
   $("#loading").hide();
 };
 
+function selectScenes(arr) {
+  var options = "";
+  for (var i = 0, len = arr.length; i < len; i++) {
+    var act = arr[i].split('.')[0];
+    var scene = arr[i].split('.')[1];
+    var sceneClass = 'act' + act + 'scene' + scene;
+    options += '<option value="'+sceneClass+'">Act ' + act + ', Scene ' + scene +'</option>';
+  }
+  $("#scenes").html(options);
+}
+
+function selectPlayers(arr) {
+  var options = "";
+  var unique = [... new Set(arr)];
+  for (var i = 0, len = unique.length; i < len; i++) {
+    var charClass = unique[i].replace(' ','');
+    options += '<option value="'+charClass+'">'+unique[i]+'</option>';
+  }
+  $("#players").html(options);
+  console.log(arr);
+}
+
+function selectScenes(arr) {
+  var options = "";
+  for (var i = 0, len = arr.length; i < len; i++) {
+    var act = arr[i].split('.')[0];
+    var scene = arr[i].split('.')[1];
+    var sceneClass = 'act' + act + 'scene' + scene;
+    options += '<option value="'+sceneClass+'">Act ' + act + ', Scene ' + scene +'</option>';
+  }
+  $("#scenes").html(options);
+  console.log(arr);
+}
+
 /* function to init browse after loading items */ 
-function pageInit(items) {
+function pageInit(items,scenes) {
   /* filter if hash in initial URL */
   if(window.location.hash) {
     query = decodeURIComponent(location.hash.substr(1));
     $('#quickSearch').val(query);
     filterItems(items,query);
+    selectScenes(scenes);
   } else {
     query = "";
     filterItems(items,query);
-    console.log(dd_actscenes);
+    dd_actscenes = $.unique(items.map(function (d) {return d.actscene;}));
+    dd_players = $.unique(items.map(function (d) {return d.player;}));
+    selectScenes(dd_actscenes);
+    selectPlayers(dd_players);
   }
 }
 

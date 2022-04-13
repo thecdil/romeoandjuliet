@@ -1,6 +1,7 @@
 /* Load items from Sheets, store in sessionStorage, or load from sessionStorage */
 var dd_items = [];
 var dd_actscenes = [];
+var dd_players = [];
 
 // function to process items from Sheets and store
 function dd_items_init(results) {

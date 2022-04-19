@@ -5,7 +5,6 @@ permalink: /Givingallofyourself.html
 ---
 # **<center><font color="yellow">Giving all of yourself</font></center>**
 
-**Giving all of yourself**
 ## mind, body, soul.
 
 

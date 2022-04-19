@@ -5,7 +5,7 @@ permalink: /Thecrazythingswedoforlove.html
 ---
 # **<center><font color="purple">The crazy things we do for love</font></center>**
 
-##Dena Domenicali-Rochelle  
+**Dena Domenicali-Rochelle,LCSW**    
 is a clinical social worker and psychoanalyst. She is a graduate of New York University School of Social Work and the William Alanson White Institute for Psychoanalysis. She has a private practice in midtown Manhattan...
 
 As a practicing psychoanalyst, I can confidently declare:   

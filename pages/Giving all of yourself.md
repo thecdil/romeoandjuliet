@@ -6,7 +6,7 @@ permalink: /Givingallofyourself.html
 # **<center><font color="yellow">Giving all of yourself</font></center>**
 
 **Giving all of yourself**
-mind, body, soul.
+## mind, body, soul.
 
 
 When you are in a relationship, do you give all of yourself?

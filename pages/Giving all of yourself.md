@@ -5,9 +5,8 @@ permalink: /Givingallofyourself.html
 ---
 # **<center><font color="yellow">Giving all of yourself</font></center>**
 
-## mind, body, soul.
-
-
+## mind, body, soul.  
+  
 When you are in a relationship, do you give all of yourself?  
 Or do you hold back?  
 Is it because you are afraid?  
